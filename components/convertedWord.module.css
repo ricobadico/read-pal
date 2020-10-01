@@ -1,4 +1,12 @@
-.word{
+.wordWrapper{
+    margin: 2px 2px;
+    position: relative;
+}
+
+.speechButton{
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    margin: 5px 5px;
+    font-size: large;
+    background-color: white;
+    border: none;
+    padding: 0;
 }

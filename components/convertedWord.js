@@ -1,30 +1,43 @@
-import Speech from 'react-speech';
-import styles from './convertedWord.module.css'
+import styles from './convertedWord.module.css';
+import dynamic from "next/dynamic";
 
-const ConvertedWord = ({ children, wordToConvert } ) => {
+// Have to dynamically import react-speech to avoid errors on referencing window on prerender
+const Speech = dynamic(
+    () => {
+        return import("react-speech");
+    },
+    { ssr: false }
+);
+
+const ConvertedWord = ({ wordToConvert } ) => {
     console.log(wordToConvert);
 
-    const speechButtonStyle = {
-        play: {
-          button: {
-            width: '28',
-            height: '28',
-            cursor: 'pointer',
-            pointerEvents: 'none',
-            outline: 'none',
-            backgroundColor: 'yellow',
-            border: 'solid 1px rgba(255,255,255,1)',
-            borderRadius: 6
-          },
-        }
-      };
+if (typeof window !== "undefined") {
+    const speak = () => {
+        var msg = new SpeechSynthesisUtterance();
+    var voices = window.speechSynthesis.getVoices();
+    msg.voice = voices[1];
+    msg.volume = 1; // From 0 to 1
+    msg.rate = 1; // From 0.1 to 10
+    msg.pitch = 2; // From 0 to 2
+    msg.text = wordToConvert;
+    msg.lang = 'en';
+    speechSynthesis.speak(msg);
+    }
+    
 
     return (
-        <div className={styles.word}>
-            <Speech styles={speechButtonStyle} text={wordToConvert} />
+        <div className={styles.wordWrapper}>
+            <button className={styles.speechButton} 
+            onClick={speak}>
             {wordToConvert}
+            </button>
         </div>
     )
+} else {
+    return (<p>loading</p>)
+}
+   
 }
 
 export default ConvertedWord;
