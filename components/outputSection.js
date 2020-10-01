@@ -1,4 +1,4 @@
-import styles from './outputSection.module.css'
+import styles from '../styles/outputSection.module.css'
 import ConvertedWord from './convertedWord'
 
 export default function OutputSection() {
