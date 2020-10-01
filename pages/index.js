@@ -8,24 +8,26 @@ import Layout from "../components/layout"
 
 class Home extends Component {
 
-  constructor(){
-    super();
+  constructor(props){
+    super(props);
     this.state = {
-      inputText: "Put some text here",
+      input: this.props.inputText,
     }
   }
 
-  // Captures text placed in the inputSection
-  onInputChange = (event) => {
-    this.setState({inputText: event.target.value});
-    console.log(event.target.value);
-  }
+ 
 
   onInputSubmit = () => {
-    
+    //get current input from state
+
+    //convert input into an array of words
+
+    //return that array to be passed
+    return "renderedInput";
   }
 
   render(){
+    console.log("State?: " + this.props.inputText)
     return (
       <div className={styles.container}>
         <Head>
@@ -37,8 +39,9 @@ class Home extends Component {
           <Layout home>
           
           <div className={styles.grid}>
-            <InputSection inputText={this.state.inputText}
-            onInputChange={this.onInputChange} />
+            <InputSection inputText={this.props.inputText}
+            onInputChange={this.props.onInputChange}
+            onInputSubmit={this.onInputSubmit} />
 
             
           </div>
