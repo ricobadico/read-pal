@@ -7,7 +7,9 @@ export default function OutputSection( { sentenceArray, getVoice }) {
         if (typeof window !== "undefined") {
                 var msg = new SpeechSynthesisUtterance();
                 var voices = (window.speechSynthesis.getVoices());
-                window.speechSynthesis.onvoiceschanged = (e) => window.speechSynthesis.getVoices();
+                if(window.speechSynthesis.onvoiceschanged !== undefined){
+                    window.speechSynthesis.onvoiceschanged = window.speechSynthesis.getVoices()
+                }
                 //).filter(voice => voice.lang == "en-US");
                 console.log(voices);
                 msg.voice = voices[getVoice()];
