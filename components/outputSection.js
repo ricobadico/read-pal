@@ -3,15 +3,15 @@ import ConvertedWord from './convertedWord'
 
 export default function OutputSection( { sentenceArray, getVoice }) {
 
-    var voices = [];
-
     const populateVoiceList = () => {
+        var voices = [];
         if (typeof window !== "undefined") {
             return voices = window.speechSynthesis.getVoices();
         }
     }
 
     const speakSentence = (text) => {
+        var voices = [];
         if (typeof window !== "undefined") {
                 let msg = new SpeechSynthesisUtterance();
                 voices = populateVoiceList();
