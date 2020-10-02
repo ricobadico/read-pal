@@ -3,39 +3,24 @@ import ConvertedWord from './convertedWord'
 
 export default function OutputSection( { sentenceArray, getVoice }) {
 
- function populateVoiceList() {
-        if(typeof speechSynthesis === 'undefined') {
-            return;
+    const populateVoiceList = () => {
+        var voices = [];
+        if (typeof window !== "undefined") {
+            voices = window.speechSynthesis.getVoices()
+            return voices;
         }
+   
     
-        var voices = speechSynthesis.getVoices().then(voices => console.log(voices));
-        return voices;
-    }
-    
-    // function makeVoiceHappen(){
-    // populateVoiceList();
-    //     if (typeof speechSynthesis !== 'undefined' && speechSynthesis.onvoiceschanged !== undefined) {
-    //         speechSynthesis.onvoiceschanged = populateVoiceList;
-    //     }
-    // }
-    // const populateVoiceList = () => {
-    //     var voices = [];
-    //     if (typeof window !== "undefined") {
-    //         return voices = window.speechSynthesis.getVoices();
-    //     }
-    // }
 
     const speakSentence = (text) => {
         var voices = [];
         if (typeof window !== "undefined") {
                 let msg = new SpeechSynthesisUtterance();
-                voices = speechSynthesis.getVoices();
-                while (voices == undefined) {
-                    console.log("oh no");
+                voices = populateVoiceList();
+                if(window.speechSynthesis.onvoiceschanged !== undefined){
+                    window.speechSynthesis.onvoiceschanged = populateVoiceList;
                 }
-                // if(window.speechSynthesis.onvoiceschanged !== undefined){
-                //     window.speechSynthesis.onvoiceschanged = populateVoiceList;
-                // }
+                voices = populateVoiceList();
                 //).filter(voice => voice.lang == "en-US");
                 // console.log(voices);
                 msg.voice = voices[getVoice()];
