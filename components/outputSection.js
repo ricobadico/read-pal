@@ -9,7 +9,7 @@ export default function OutputSection( { sentenceArray, getVoice }) {
             voices = window.speechSynthesis.getVoices()
             return voices;
         }
-   
+    }
     
 
     const speakSentence = (text) => {
