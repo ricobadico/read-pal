@@ -1,29 +1,23 @@
-import styles from './convertedWord.module.css';
+import styles from '../styles/convertedWord.module.css';
 import dynamic from "next/dynamic";
 
-// Have to dynamically import react-speech to avoid errors on referencing window on prerender
-const Speech = dynamic(
-    () => {
-        return import("react-speech");
-    },
-    { ssr: false }
-);
 
-const ConvertedWord = ({ wordToConvert } ) => {
-    console.log(wordToConvert);
+const ConvertedWord = ({ wordToConvert, getVoice } ) => {
 
+// If statement prevents issue where window is not defined on next.js prerenders
 if (typeof window !== "undefined") {
     const speak = () => {
         var msg = new SpeechSynthesisUtterance();
-    var voices = window.speechSynthesis.getVoices();
-    msg.voice = voices[1];
-    msg.volume = 1; // From 0 to 1
-    msg.rate = 1; // From 0.1 to 10
-    msg.pitch = 2; // From 0 to 2
-    msg.text = wordToConvert;
-    msg.lang = 'en';
-    speechSynthesis.speak(msg);
-    }
+        var voices = window.speechSynthesis.getVoices();
+        msg.voice = voices[getVoice()];
+        msg.volume = 1; // From 0 to 1
+        msg.rate = 1; // From 0.1 to 10
+        msg.pitch = 2; // From 0 to 2
+        msg.text = wordToConvert;
+        msg.lang = 'en';
+        speechSynthesis.cancel();
+        speechSynthesis.speak(msg);
+        }
     
 
     return (
