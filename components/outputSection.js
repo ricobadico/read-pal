@@ -3,12 +3,20 @@ import ConvertedWord from './convertedWord'
 
 export default function OutputSection( { sentenceArray, getVoice }) {
 
+    let voices;
+
+    const loadVoices = () => {
+        if (typeof window !== "undefined") {
+           return voices = window.speechSynthesis.getVoices();
+        }
+    }
+
     const speakSentence = (text) => {
         if (typeof window !== "undefined") {
                 let msg = new SpeechSynthesisUtterance();
-                var voices = (window.speechSynthesis.getVoices());
+                voices = loadVoices();
                 if(window.speechSynthesis.onvoiceschanged !== undefined){
-                    window.speechSynthesis.onvoiceschanged = window.speechSynthesis.getVoices()
+                    window.speechSynthesis.onvoiceschanged = loadVoices;
                 }
                 //).filter(voice => voice.lang == "en-US");
                 console.log(voices);
