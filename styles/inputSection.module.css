@@ -18,3 +18,11 @@
     max-width: 800px;
     margin-top: 3rem;
   }
+
+  .submitButton{
+    font-size: xx-large;
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px 2px #757575;
+
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  }

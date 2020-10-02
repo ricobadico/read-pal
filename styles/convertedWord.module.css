@@ -1,12 +1,17 @@
 .wordWrapper{
-    margin: 2px 2px;
+    margin: 7px 3px;
     position: relative;
 }
 
 .speechButton{
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    font-size: large;
+    font-size: 1rem;
     background-color: white;
     border: none;
-    padding: 0;
+    padding: 3px 3px;
+}
+
+.speechButton:hover{
+    background-color: gainsboro;
+    border-radius: 5px;
 }

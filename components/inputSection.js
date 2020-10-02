@@ -15,7 +15,7 @@ export default function InputSection( { inputText, onInputChange, onInputSubmit 
                     pathname: '/output',
                     query: {test: {onInputSubmit}}
                 }}>
-                    <button>Help Me Read</button>
+                    <button className={styles.submitButton}>Help Me Read</button>
                 </Link>
             </div>
         );

@@ -29,16 +29,16 @@ class Home extends Component {
   render(){
     console.log("State?: " + this.props.inputText)
     return (
-      <div className={styles.container}>
+      <div className="container">
         <Head>
           <title>Read Pal</title>
           <link rel="icon" href="/favicon.ico" />
         </Head>
 
-        <main className={styles.main}>
+        <main className="main">
           <Layout home>
           
-          <div className={styles.grid}>
+          <div className="grid">
             <InputSection inputText={this.props.inputText}
             onInputChange={this.props.onInputChange}
             onInputSubmit={this.onInputSubmit} />

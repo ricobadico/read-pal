@@ -3,7 +3,18 @@
     align-items: center;
     justify-content: left;
     flex-wrap: wrap;
-    width: 80%;
-    max-width: 80%;
 }
 
+.sentence{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.sentenceButton{
+    border: none;
+    padding: none;
+    text-decoration: none;
+    height: 1rem;
+    width: auto;
+    margin: auto 5px;
+}
