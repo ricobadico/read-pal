@@ -13,11 +13,13 @@ export default class Output extends React.Component{
     }
 
     voiceToggle = () => {
-        if (this.state.voiceIndex != 1){
-            this.setState({ voiceIndex: 1 });
-        } else {
-            this.setState({ voiceIndex: 0 });
-        }
+        // if (this.state.voiceIndex != 1){
+        //     this.setState({ voiceIndex: 1 });
+        // } else {
+        //     this.setState({ voiceIndex: 0 });
+        // }
+        let nextVoice = this.state.voiceIndex +1;
+        this.setState({voiceIndex: nextVoice})
     }
 
     getVoice =() => {

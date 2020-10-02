@@ -6,7 +6,8 @@ export default function OutputSection( { sentenceArray, getVoice }) {
     const speakSentence = (text) => {
         if (typeof window !== "undefined") {
                 var msg = new SpeechSynthesisUtterance();
-                var voices = (window.speechSynthesis.getVoices()).filter(voice => voice.lang == "en-US");
+                var voices = (window.speechSynthesis.getVoices());
+                //).filter(voice => voice.lang == "en-US");
                 console.log(voices);
                 msg.voice = voices[getVoice()];
                 msg.volume = 1; // From 0 to 1
