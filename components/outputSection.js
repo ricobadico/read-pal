@@ -1,28 +1,15 @@
 import styles from '../styles/outputSection.module.css'
 import ConvertedWord from './convertedWord'
 
-export default function OutputSection( { sentenceArray, getVoice }) {
-
-    const populateVoiceList = () => {
-        var voices = [];
-        if (typeof window !== "undefined") {
-            voices = window.speechSynthesis.getVoices()
-            return voices;
-        }
-    }
-    
+export default function OutputSection( { sentenceArray, getVoice, voiceList }) {
 
     const speakSentence = (text) => {
         var voices = [];
         if (typeof window !== "undefined") {
                 let msg = new SpeechSynthesisUtterance();
-                voices = populateVoiceList();
-                if(window.speechSynthesis.onvoiceschanged !== undefined){
-                    window.speechSynthesis.onvoiceschanged = populateVoiceList;
-                }
-                voices = populateVoiceList();
                 //).filter(voice => voice.lang == "en-US");
                 // console.log(voices);
+                voices = voiceList;
                 msg.voice = voices[getVoice()];
                 msg.volume = 1; // From 0 to 1
                 msg.rate = 1; // From 0.1 to 10

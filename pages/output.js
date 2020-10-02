@@ -8,9 +8,19 @@ export default class Output extends React.Component{
     constructor(){
         super();
         this.state = {
+            voices : [],
             voiceIndex: 0
         }
     }
+
+    populateVoiceList = () => {
+        var voices = [];
+        if (typeof window !== "undefined") {
+            voices = window.speechSynthesis.getVoices()
+            this.setState({voices: voices})
+        }
+    }
+    
 
     voiceToggle = () => {
         // if (this.state.voiceIndex != 1){
@@ -31,6 +41,15 @@ export default class Output extends React.Component{
         const inputText = this.props.inputText;
         const sentenceArray = inputText.replace(/([.?!])\s*(?=[A-Z])/g, "$1|").split("|");
 
+        if(this.state.voices == []){
+            this.populateVoiceList();
+            if (typeof window !== "undefined") {
+                if(window.speechSynthesis.onvoiceschanged !== undefined){
+                    window.speechSynthesis.onvoiceschanged = this.populateVoiceList;
+                }
+            }
+        }  
+
         return (
             <div className="container">
                 <Head>
@@ -41,7 +60,7 @@ export default class Output extends React.Component{
                 <h2>Click a word to hear it! Click a speech bubble to hear the sentence. </h2>
                 <button style={{fontSize: "x-large", marginBottom: "1em"}} className="submitButton" onClick={this.voiceToggle}>Change Voice</button>
                 <div className="card">
-                    <OutputSection sentenceArray={sentenceArray} getVoice={this.getVoice}/>
+                    <OutputSection sentenceArray={sentenceArray} getVoice={this.getVoice} voiceList={this.state.voices}/>
                 </div>
                 </Layout>
             </div>
