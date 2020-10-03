@@ -8,15 +8,14 @@ export default class Output extends React.Component{
     constructor(){
         super();
         this.state = {
-            voices : [],
+            voices : "",
             voiceIndex: 0
         }
     }
 
     populateVoiceList = () => {
-        var voices = [];
         if (typeof window !== "undefined") {
-            voices = window.speechSynthesis.getVoices();
+            var voices = window.speechSynthesis.getVoices();
             this.setState({voices: voices})
         }
     }
@@ -27,13 +26,11 @@ export default class Output extends React.Component{
     
 
     voiceToggle = () => {
-        // if (this.state.voiceIndex != 1){
-        //     this.setState({ voiceIndex: 1 });
-        // } else {
-        //     this.setState({ voiceIndex: 0 });
-        // }
-        let nextVoice = this.state.voiceIndex +1;
-        this.setState({voiceIndex: nextVoice})
+        if (this.state.voiceIndex != 1){
+            this.setState({ voiceIndex: 1 });
+        } else {
+            this.setState({ voiceIndex: 0 });
+        }
     }
 
     getVoice =() => {
@@ -49,10 +46,27 @@ export default class Output extends React.Component{
         }
     }
 
+    componentDidMount(){
+        this.populateVoiceList();
+        if (typeof window !== "undefined") {
+            if(window.speechSynthesis.onvoiceschanged !== undefined){
+                window.speechSynthesis.onvoiceschanged = this.populateVoiceList;
+            }
+        }  
+    }
+
     render(){
         
         const inputText = this.props.inputText;
         const sentenceArray = inputText.replace(/([.?!])\s*(?=[A-Z])/g, "$1|").split("|");
+
+        // if(this.state.voices == ""){ 
+        //     if (typeof window !== "undefined") {
+        //         if(window.speechSynthesis.onvoiceschanged !== undefined){
+        //             window.speechSynthesis.onvoiceschanged = this.populateVoiceList;
+        //         }
+        //     }
+        // }  
 
         return (
             <div className="container">
@@ -63,7 +77,8 @@ export default class Output extends React.Component{
                 <Layout> 
                 <h2>Click a word to hear it! Click a speech bubble to hear the sentence. </h2>
                 {/* Hide this button if extra voices don't load */}
-                {this.state.voices == [] ? <div></div> : 
+          
+                {this.state.voices == "" ? <div></div> : 
                 <button style={{fontSize: "x-large", marginBottom: "1em"}} className="submitButton" 
                 onClick={this.voiceToggle} id="changeVoiceButton">Change Voice</button>}
                 <div className="card">
