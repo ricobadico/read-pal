@@ -3,18 +3,12 @@ import Link from 'next/link'
 
 export default function InputSection( { inputText, onInputChange, onInputSubmit }) {
 
-    const selectText = (event) => {
-        let textElement = event.currentTarget;
-        textElement.select();
-    }
-
      return (
         <div className={styles.grid}>
                 <textarea rows="20" cols="150"
                 className={styles.textInputBox} name="inputText"
                 autoFocus={false}
-                onClick={(event => selectText(event))}
-                defaultValue={inputText}
+                placeholder={inputText}
                 onChange={onInputChange}
                 id="inputTextArea"
                 />
