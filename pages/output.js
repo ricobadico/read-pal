@@ -47,9 +47,10 @@ export default class Output extends React.Component{
 
         if(this.state.voices == ""){ 
             if (typeof window !== "undefined") {
-                if(window.speechSynthesis.onvoiceschanged !== undefined){
-                    window.speechSynthesis.onvoiceschanged = this.populateVoiceList;
-                }
+                this.populateVoiceList();
+                // if(window.speechSynthesis.onvoiceschanged !== undefined){
+                //     window.speechSynthesis.onvoiceschanged = this.populateVoiceList;
+                // }
             }
         }  
 
