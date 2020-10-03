@@ -20,6 +20,10 @@ export default class Output extends React.Component{
             this.setState({voices: voices})
         }
     }
+
+    getVoicesTest = () => {
+        return this.state.voices;
+    }
     
 
     voiceToggle = () => {
@@ -33,7 +37,7 @@ export default class Output extends React.Component{
     }
 
     getVoice =() => {
-        return this.state.voiceIndex;
+        return Object.toString(this.state.voiceIndex);
     }
 
     render(){
@@ -64,6 +68,7 @@ export default class Output extends React.Component{
                 <div className="card">
                     <OutputSection sentenceArray={sentenceArray} getVoice={this.getVoice} voiceList={this.state.voices}/>
                 </div>
+                <div>{"hello:" + this.getVoicesTest()}</div>
                 </Layout>
             </div>
         )
