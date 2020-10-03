@@ -8,7 +8,7 @@ export default class Output extends React.Component{
     constructor(){
         super();
         this.state = {
-            voices : [],
+            voices : "",
             voiceIndex: 0
         }
     }
@@ -16,7 +16,7 @@ export default class Output extends React.Component{
     populateVoiceList = () => {
         var voices = [];
         if (typeof window !== "undefined") {
-            voices = window.speechSynthesis.getVoices()
+            voices = window.speechSynthesis.getVoices();
             this.setState({voices: voices})
         }
     }
@@ -41,8 +41,7 @@ export default class Output extends React.Component{
         const inputText = this.props.inputText;
         const sentenceArray = inputText.replace(/([.?!])\s*(?=[A-Z])/g, "$1|").split("|");
 
-        if(this.state.voices == []){
-            this.populateVoiceList();
+        if(this.state.voices == ""){ 
             if (typeof window !== "undefined") {
                 if(window.speechSynthesis.onvoiceschanged !== undefined){
                     window.speechSynthesis.onvoiceschanged = this.populateVoiceList;
