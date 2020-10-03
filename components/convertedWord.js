@@ -2,7 +2,7 @@ import styles from '../styles/convertedWord.module.css';
 import dynamic from "next/dynamic";
 
 
-const ConvertedWord = ({ wordToConvert, getVoice } ) => {
+const ConvertedWord = ({ wordToConvert, getVoice, voiceList } ) => {
 
 // If statement prevents issue where window is not defined on next.js prerenders
 if (typeof window !== "undefined") {
