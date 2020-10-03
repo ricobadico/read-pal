@@ -8,7 +8,7 @@ export default class Output extends React.Component{
     constructor(){
         super();
         this.state = {
-            voices : undefined,
+            voices : [],
             voiceIndex: 0
         }
     }
@@ -58,7 +58,7 @@ export default class Output extends React.Component{
                 <Layout> 
                 <h2>Click a word to hear it! Click a speech bubble to hear the sentence. </h2>
                 {/* Hide this button if extra voices don't load */}
-                {this.state.voices == undefined ? <div></div> : 
+                {this.state.voices == [] ? <div></div> : 
                 <button style={{fontSize: "x-large", marginBottom: "1em"}} className="submitButton" 
                 onClick={this.voiceToggle} id="changeVoiceButton">Change Voice</button>}
                 <div className="card">
