@@ -8,10 +8,10 @@ const ConvertedWord = ({ wordToConvert, getVoice, voiceList } ) => {
 if (typeof window !== "undefined") {
     const speak = () => {
         var msg = new SpeechSynthesisUtterance();
-        var voices = voiceList;
+        var voices = voiceList.filter(voice => voice.lang == "en_US");;
         msg.voice = voices[getVoice()];
         msg.text = wordToConvert;
-        msg.lang = 'en_UK';
+        msg.lang = 'en_US';
         speechSynthesis.cancel();
         speechSynthesis.speak(msg);
         }

@@ -7,10 +7,11 @@ export default function OutputSection( { sentenceArray, getVoice, voiceList }) {
         var voices = [];
         if (typeof window !== "undefined") {
                 let msg = new SpeechSynthesisUtterance();
-                voices = voiceList;
+                voices = voiceList.filter(voice => voice.lang == "en-US");
                 msg.voice = voices[getVoice()];
                 msg.text = text;
-                msg.lang = 'en_US';
+                msg.lang = 'en-US';
+                msg.pi
                 speechSynthesis.cancel();
                 speechSynthesis.speak(msg);
                 }
