@@ -57,7 +57,10 @@ export default class Output extends React.Component{
                 </Head>
                 <Layout> 
                 <h2>Click a word to hear it! Click a speech bubble to hear the sentence. </h2>
-                <button style={{fontSize: "x-large", marginBottom: "1em"}} className="submitButton" onClick={this.voiceToggle}>Change Voice</button>
+                {/* Hide this button if extra voices don't load */}
+                {this.state.voices != "" ? <button style={{fontSize: "x-large", marginBottom: "1em"}} className="submitButton" 
+                onClick={this.voiceToggle} id="changeVoiceButton">Change Voice</button>
+                : <div></div>}
                 <div className="card">
                     <OutputSection sentenceArray={sentenceArray} getVoice={this.getVoice} voiceList={this.state.voices}/>
                 </div>

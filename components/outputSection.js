@@ -7,14 +7,8 @@ export default function OutputSection( { sentenceArray, getVoice, voiceList }) {
         var voices = [];
         if (typeof window !== "undefined") {
                 let msg = new SpeechSynthesisUtterance();
-                //).filter(voice => voice.lang == "en-US");
-                
                 voices = voiceList;
-                console.log(voices);
                 msg.voice = voices[getVoice()];
-                // msg.volume = 1; // From 0 to 1
-                // msg.rate = 1; // From 0.1 to 10
-                // msg.pitch = 2; // From 0 to 2
                 msg.text = text;
                 msg.lang = 'en_US';
                 speechSynthesis.cancel();
@@ -25,7 +19,6 @@ export default function OutputSection( { sentenceArray, getVoice, voiceList }) {
 
     return (
         <div className={styles.grid}>
-        <select id="voiceSelect"></select>
             {sentenceArray.map((sentence, index) =>
                 (
                     <div className={styles.sentence} key={index}>
@@ -34,7 +27,7 @@ export default function OutputSection( { sentenceArray, getVoice, voiceList }) {
                             sentence.split(" ").map((element, index) => 
                                 (
                                     <ConvertedWord key={index} className={styles.convertedText}
-                                    wordToConvert={element} getVoice={getVoice}/>
+                                    wordToConvert={element} getVoice={getVoice} voiceList={voiceList}/>
                                 )
                             )
                         }</div>
