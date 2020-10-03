@@ -19,6 +19,10 @@ export default class Output extends React.Component{
             this.setState({voices: voices})
         }
     }
+
+    getVoicesTest = () => {
+        return this.state.voices;
+    }
     
 
     voiceToggle = () => {
@@ -30,7 +34,16 @@ export default class Output extends React.Component{
     }
 
     getVoice =() => {
-        return this.state.voiceIndex;
+        return Object.toString(this.state.voiceIndex);
+    }
+
+    componentDidMount(){
+        if (typeof window !== "undefined") {
+            this.populateVoiceList();
+            // if(window.speechSynthesis.onvoiceschanged !== undefined){
+            //     window.speechSynthesis.onvoiceschanged = this.populateVoiceList;
+            // }
+        }
     }
 
     componentDidMount(){
@@ -64,12 +77,14 @@ export default class Output extends React.Component{
                 <Layout> 
                 <h2>Click a word to hear it! Click a speech bubble to hear the sentence. </h2>
                 {/* Hide this button if extra voices don't load */}
+          
                 {this.state.voices == "" ? <div></div> : 
                 <button style={{fontSize: "x-large", marginBottom: "1em"}} className="submitButton" 
                 onClick={this.voiceToggle} id="changeVoiceButton">Change Voice</button>}
                 <div className="card">
                     <OutputSection sentenceArray={sentenceArray} getVoice={this.getVoice} voiceList={this.state.voices}/>
                 </div>
+                <div>{"hello:" + this.getVoicesTest()}</div>
                 </Layout>
             </div>
         )
