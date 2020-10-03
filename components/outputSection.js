@@ -10,12 +10,12 @@ export default function OutputSection( { sentenceArray, getVoice, voiceList }) {
                 //).filter(voice => voice.lang == "en-US");
                 // console.log(voices);
                 voices = voiceList;
-                msg.voiceURI = voices[getVoice()].voiceURI;
-                msg.volume = 1; // From 0 to 1
-                msg.rate = 1; // From 0.1 to 10
-                msg.pitch = 2; // From 0 to 2
+                msg.voice = voices[getVoice()];
+                // msg.volume = 1; // From 0 to 1
+                // msg.rate = 1; // From 0.1 to 10
+                // msg.pitch = 2; // From 0 to 2
                 msg.text = text;
-                msg.lang = 'en-us';
+                msg.lang = 'en_US';
                 speechSynthesis.cancel();
                 speechSynthesis.speak(msg);
                 }
