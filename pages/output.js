@@ -40,19 +40,19 @@ export default class Output extends React.Component{
         return Object.toString(this.state.voiceIndex);
     }
 
+    componentDidMount(){
+        if (typeof window !== "undefined") {
+            this.populateVoiceList();
+            // if(window.speechSynthesis.onvoiceschanged !== undefined){
+            //     window.speechSynthesis.onvoiceschanged = this.populateVoiceList;
+            // }
+        }
+    }
+
     render(){
         
         const inputText = this.props.inputText;
         const sentenceArray = inputText.replace(/([.?!])\s*(?=[A-Z])/g, "$1|").split("|");
-
-        if(this.state.voices == ""){ 
-            if (typeof window !== "undefined") {
-                this.populateVoiceList();
-                // if(window.speechSynthesis.onvoiceschanged !== undefined){
-                //     window.speechSynthesis.onvoiceschanged = this.populateVoiceList;
-                // }
-            }
-        }  
 
         return (
             <div className="container">
