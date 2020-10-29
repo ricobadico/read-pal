@@ -61,7 +61,7 @@ export default class Output extends React.Component{
                 <title>Read Pal</title>
                 <link rel="icon" href="/favicon.svg" />
                 </Head>
-                <Layout> 
+                <Layout loginToggle={this.props.loginToggle}> 
                 <h2>Click a word to hear it! Click a speech bubble to hear the sentence. </h2>
                 {/* Hide this button if extra voices don't load */}
                 {this.state.voices == "" ? <div></div> : 
@@ -70,6 +70,15 @@ export default class Output extends React.Component{
                 <div className="card">
                     <OutputSection sentenceArray={sentenceArray} getVoice={this.getVoice} voiceList={this.state.voices}/>
                 </div>
+                <div style={{ marginTop: '20px'}}>
+                    {this.props.login == true ? 
+                        <button className="submitButton" style={{fontSize: 'x-large'}}>Share</button>
+                        // TODO: have a message pop up when share is hit with new link
+                        : 
+                        <div></div>
+                    }
+                </div>
+                
                 </Layout>
             </div>
         )

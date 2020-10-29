@@ -1,0 +1,28 @@
+/* Hambuger Menu Dropdown */
+
+/* The ul styling */
+.hamburgerDropDown {
+    position: absolute;
+    margin-right: auto;
+    background-color: none;
+    padding: 10px;
+    list-style-type: none;
+    display: inline-block;
+}
+
+  /* Position of the hamburger symbol */
+.navbar {
+    margin-right: auto;
+    position: relative;
+    display: inline-block;
+}
+
+.menuLi {
+    text-decoration: none;
+    display: inline-block;
+    float:right;
+}
+
+.teacherButton {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}

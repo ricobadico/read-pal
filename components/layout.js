@@ -1,14 +1,16 @@
-import Head from 'next/head'
-import styles from '../styles/layout.module.css'
-import utilStyles from '../styles/utils.module.css'
-import Link from 'next/link'
+import Head from 'next/head';
+import styles from '../styles/layout.module.css';
+import utilStyles from '../styles/utils.module.css';
+import Link from 'next/link';
+import NaviButton from './naviButton'
 
-const name = 'Read Pal'
-export const siteTitle = 'Next.js Sample Website'
+const name = 'Read Pal';
+export const siteTitle = 'Next.js Sample Website';
 
-export default function Layout({ children, home }) {
+export default function Layout({ children, home, loginToggle }) {
   return (
     <div className="container">
+    <NaviButton loginToggle={loginToggle}/>
       <h1 className="title">
             Read Pal
           </h1>
