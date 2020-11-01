@@ -10,7 +10,7 @@ export const siteTitle = 'Next.js Sample Website';
 export default function Layout({ children, home, loginToggle }) {
   return (
     <div className="container">
-    <NaviButton loginToggle={loginToggle}/>
+
       <h1 className="title">
             Read Pal
           </h1>
