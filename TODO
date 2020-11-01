@@ -1,0 +1,9 @@
+TODO:
+
+X Create a dynamic page that uses its path to display a corresponding hard-coded saved text
+
+Set up database of dynamic saved texts
+
+Have the dynamic page check that database
+
+Add button to output page that saves text into that database: need id(hashed?), text, entry date

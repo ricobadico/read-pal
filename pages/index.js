@@ -6,6 +6,7 @@ import React, { Component } from 'react'
 import Layout from "../components/layout"
 
 
+
 class Home extends Component {
 
   constructor(props){
@@ -35,7 +36,7 @@ class Home extends Component {
         </Head>
 
         <main className="main">
-          <Layout home>
+          <Layout home loginToggle={this.props.loginToggle}>
           
           <div className="grid">
             <InputSection inputText={this.props.inputText}

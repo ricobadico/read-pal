@@ -3,14 +3,22 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "node pages/api/ssr-server.js",
     "build": "next build",
     "start": "next start"
   },
   "dependencies": {
-    "next": "9.5.3",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "hashids": "^2.2.1",
+    "next": "^9.5.5",
     "react": "16.13.1",
     "react-dom": "16.13.1",
-    "react-speech": "^1.0.2"
+    "react-hamburger-menu": "^1.2.1",
+    "react-speech": "^1.0.2",
+    "serverless-mysql": "^1.5.4",
+    "sql-template-strings": "^2.2.2",
+    "swr": "^0.3.7"
   }
 }
