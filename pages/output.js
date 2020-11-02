@@ -110,8 +110,9 @@ export default class Output extends React.Component{
                     {!this.state.savedTextId ?
                         <div>{this.state.messageIfSaving}</div>
                         :
-                        <h2>Done! Share this text at <a 
-                            href={newSavedURL}
+                        <h2>Done! Share this text at
+                        <br />
+                        <a href={newSavedURL}
                             style={{color:'blue'}}>
                             {newSavedURL}
                         </a></h2>    

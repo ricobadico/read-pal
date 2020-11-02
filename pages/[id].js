@@ -22,7 +22,7 @@ const textFetcher = async (url) => {
 export default function SavedOutput(props){
 
   // Pre-loaded voice data pulled from main app props
-  const [voices, setVoices] = useState("");
+  const [voices, setVoices] = useState([]);
   const [voiceIndex, setVoiceIndex] = useState(0);
 
   //router is used to get id from url.
@@ -70,7 +70,7 @@ export default function SavedOutput(props){
     populateVoiceList();
     if (typeof window !== "undefined") {
         if(window.speechSynthesis.onvoiceschanged !== undefined){
-            window.speechSynthesis.onvoiceschanged = populateVoiceList(); //NOTE ** populateVoiceList lacked () here, could be source of issue in outputtext>
+            window.speechSynthesis.onvoiceschanged = populateVoiceList;
         }
     }
   },[])
@@ -89,7 +89,7 @@ export default function SavedOutput(props){
       <Layout loginToggle={props.loginToggle}>
       <h2>Click a word to hear it! Click a speech bubble to hear the sentence. </h2>
       {/* Hide this button if extra voices don't load */}
-      {voices == "" ? <div></div> : 
+      {voices.length < 2 ? <div></div> : 
       <button style={{fontSize: "x-large", marginBottom: "1em"}} className="submitButton" 
       onClick={voiceToggle} id="changeVoiceButton">Change Voice</button>}
       <div className="card">
