@@ -58,11 +58,9 @@ export default class Output extends React.Component{
 
              // URL for api insert call, with text sent as query
             const apiURL = '/api/texts/saveNewText?textToSave=' + this.props.inputText;
-            console.log(apiURL);
 
             const res = await fetch(apiURL);
             const data = await res.json();
-            console.log(data.createdId);
 
             //Create a message that shows link to new page
             this.setState({ savedTextId: data.createdId});
