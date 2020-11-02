@@ -22,7 +22,6 @@ export default class MyApp extends App {
 
   loginToggle = (event) => {
     this.state.login == false ? this.setState({login: true}) : this.setState({login: false});
-    console.log(this.state.login);
   }
 
   render(){

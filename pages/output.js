@@ -113,7 +113,7 @@ export default class Output extends React.Component{
                         <h2>Done! Share this text at
                         <br />
                         <a href={newSavedURL}
-                            style={{color:'blue'}}>
+                            style={{color:'blue', textDecoration:'underline'}}>
                             {newSavedURL}
                         </a></h2>    
                     }
