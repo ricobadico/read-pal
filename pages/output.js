@@ -54,7 +54,7 @@ export default class Output extends React.Component{
         if (!this.state.saveButtonUsed){
             // Prevent future presses
             this.setState({ saveButtonUsed: true });
-            this.setState({ messageIfSaving: "Saving...one moment..." })
+            this.setState({ messageIfSaving: "Saving...one moment...\nIf this message shows for too long, the server may be down. Please try again later." })
 
              // URL for api insert call, with text sent as query
             const apiURL = '/api/texts/saveNewText?textToSave=' + this.props.inputText;
