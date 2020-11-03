@@ -6,6 +6,7 @@ export default function InputSection( { inputText, onInputChange, onInputSubmit 
      return (
         <div className={styles.grid}>
                 <textarea rows="20" cols="150"
+                maxlength="9999"
                 className={styles.textInputBox} name="inputText"
                 autoFocus={false}
                 placeholder={inputText}
